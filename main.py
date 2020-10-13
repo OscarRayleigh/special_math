@@ -5,6 +5,8 @@ from stat1 import *
 
 
 
-liste = [1,2,3,4,5,6,7,8,9,10]
-vqt(liste)
-vqu(liste)
+
+listes = [1,2,3,4,5,6,19,15,17,18]
+print("Vqt main vaut :", vqt(listes))
+print("la liste genre entre les deux", listes)
+print("Vqu main vaut :", vqu(listes))
