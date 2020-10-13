@@ -199,15 +199,15 @@ def vqd(par):
 # à une entrée de n valeurs numériques : vqu(par)
 
 def vqt(par):
-    print("par dans vqt est : ", par)
+    temp = par
     q3 = float((vsom(par))*(75/100))
-    print("q3 vaut : ", q3)
     sum = 0
+    print("&&&&&&",par)
     liste = vecncrois(par)
+    print("====!!!!!! ",par)
     for i in liste:
         sum += i
         if sum >= q3:
-            print("Type de vqt : ", type(i))
             return i
 
 # une fonction permettant de renvoyer la valeur de l'intervalle interquatile d'un tableau
