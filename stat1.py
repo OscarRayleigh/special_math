@@ -168,26 +168,23 @@ def vss(par):
 # à une entrée de n valeurs numériques : vqu(par)
 
 def vqu(par):
-    print("par dans vqt est : ", par)
-    q1 = float((vsom(par))*(25/100))
-    print("q1 valeur : ", q1)
+    temp = list.copy(par)
+    q1 = float((vsom(temp))*(25/100)) 
     sum = 0
-    liste = vecncrois(par)
-    print("Après vecncrois : ", par)
+    liste = vecncrois(temp)
     for i in liste:
         sum += i
         if sum >= q1:
-            print("Type de vqu : ",type(i))
-            print("Par vaut juste avant le return : ", par)
             return i
 
 # une fonction permettant de renvoyer la valeur de la médiane q2 d'un tableau
 # à une entrée de n valeurs numériques : vqu(par)
 
 def vqd(par):
-    q2 = float(vsom(par))*(50/100)
+    temp = list.copy(par)
+    q2 = float(vsom(temp))*(50/100)
     sum = 0
-    liste = vecncrois(par)
+    liste = vecncrois(temp)
     for i in liste:
         sum += i
         print(sum)
@@ -199,12 +196,10 @@ def vqd(par):
 # à une entrée de n valeurs numériques : vqu(par)
 
 def vqt(par):
-    temp = par
-    q3 = float((vsom(par))*(75/100))
+    temp = list.copy(par)
+    q3 = float((vsom(temp))*(75/100))
     sum = 0
-    print("&&&&&&",par)
-    liste = vecncrois(par)
-    print("====!!!!!! ",par)
+    liste = vecncrois(temp)
     for i in liste:
         sum += i
         if sum >= q3:
@@ -214,4 +209,4 @@ def vqt(par):
 # à une entrée de n valeurs numériques : vqu(par)
 
 def viq(par):
-    print(vqt(par) - vqu(par))
+    return (vqt(par) - vqu(par))
