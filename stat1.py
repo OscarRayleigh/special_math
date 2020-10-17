@@ -161,15 +161,12 @@ def vs(par):
 def vss(par):
     return (vs(par) ** 2)
 
-# une méthode permettant d'afficher les p valeurs numériques consécutives d'une sous suite
-# d'un tableau à une entrée de n valeurs numériques : affichvecsn
-
 # une fonction permettant de renvoyer la valeur du premier quartile q1 d'un tableau
 # à une entrée de n valeurs numériques : vqu(par)
 
 def vqu(par):
     temp = list.copy(par)
-    q1 = float((vsom(temp))*(25/100)) 
+    q1 = float((vsom(temp))*(25/100))
     sum = 0
     liste = vecncrois(temp)
     for i in liste:
@@ -210,3 +207,46 @@ def vqt(par):
 
 def viq(par):
     return (vqt(par) - vqu(par))
+
+# une méthode permettant d'afficher les p valeurs numériques consécutives d'une sous suite
+# d'un tableau à une entrée de n valeurs numériques : affichvecsn(par1,par2,par3)
+
+def affichvecsn(tableau, index_debut, index_fin):
+    sous_liste = []
+    try:
+        for i in tableau:
+            while index_fin >= index_debut:
+                sous_liste.append(tableau[index_debut])
+                index_debut +=1
+        for i in sous_liste:
+            print(i)
+    except:
+        print("Erreur: les index donné les arguments dépassent la taille de la liste")
+
+# une fonction permettant de renvoyer un tableau à une entrée des p valeurs numériques
+# consécutives d'un tableau à une entrée de n valeurs numériques : vecextp(par1,par2,par3)
+
+def vecextp(tableau, index_debut, index_fin):
+    sous_liste = []
+    try:
+        for i in tableau:
+            while index_fin >= index_debut:
+                sous_liste.append(tableau[index_debut])
+                index_debut +=1
+        return sous_liste
+    except:
+        print("Erreur: les index donné les arguments dépassent la taille de la liste")
+
+# une fonction permettant de renvoyer la valeur de la somme d'une sous suite p de valeurs
+# numériques consécutives d'un tableau à une entrée de n valeurs numériques : vssom(par1,par2,par3)
+
+def vssom(tableau, index_debut, index_fin):
+    sous_liste = affichvecsn(tableau, index_debut, index_fin)
+    return vsom(sous_liste)
+
+# une méthode permettant de renvoyer la valeur de la moyenne d'une sous suite de p
+# valeurs consécutives d'un tableau à une entrée de n vlauers numériques : vssom(par1,par2,par3)
+
+def vssmoy(tableau, index_debut, index_fin):
+    sous_liste = affichvecsn(tableau, index_debut, index_fin)
+    return vsom(sous_liste)/dimn(sous_liste)
