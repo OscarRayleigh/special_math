@@ -2,11 +2,11 @@
 # entière n strictement positive et de la renvoyer : impln()
 
 def impln():
-    user_input = float(input("Entrez une valeur numérique strictement entière : "))
+    user_input = float(input("Entrez une valeur numérique positive strictement entière : "))
     if ((user_input % 1) == 0) and user_input > 0:
         return int(user_input)
     else:
-        print("Ce n'est pas une valeur numérique strictement entière !")
+        print("Ce n'est pas une valeur numérique positive strictement entière !")
 
 # écrire une fonction permettant de renvoyer un tableau à une entrée à n composantes
 # où chaque composantes est initialisée à une valeur nulle : vecn
@@ -46,7 +46,7 @@ def dimn(par):
 # numériques classées par ordre croissant : vecncrois(par)
 
 def vecncrois(par):
-    liste = par
+    liste = list.copy(par)
     liste_finale = []
     while liste:
         min = liste[0]
@@ -67,7 +67,7 @@ def vecndecrois(par):
     #     liste_finale.append(liste_croissante[-1])
     #     del liste_croissante[-1]
     # return liste_finale
-    liste = par
+    liste = list.copy(par)
     liste_finale = []
     while liste:
         max = liste[0]
@@ -82,29 +82,28 @@ def vecndecrois(par):
 # tableau à une entrée de n valeurs numériques
 
 def vmax(par):
-    while liste:
-        max = liste[0]
-        for x in liste:
-            if x > max:
-                max = x
-        return max
+    max = par[0]
+    for x in par:
+        if x > max:
+            max = x
+    return max
 
 # écrire une fonction permettant de renvoyer la valeur minimale d'un
 # tableau à une entrée de n valeurs numériques
 
 def vmin(par):
-    while liste:
-        min = liste[0]
-        for x in liste:
-            if x < min:
-                min = x
-        return min
+
+    min = par[0]
+    for x in par:
+        if x < min:
+            min = x
+    return min
 
 # écrire une fonction permettant de renvoyer l'étendue d'un
 # tableau à une entrée de n valeurs numériques
 
 def vetend(par):
-    return (max(par) - min(par))
+    return (vmax(par) - vmin(par))
 
 # écrire une fonction permettant de renvoyer la somme d'un
 # tableau à une entrée de n valeurs numériques
@@ -127,7 +126,7 @@ def vmoy(par):
 def vecma(par):
     eca_abs_moy = 0
     for i in par:
-        eca_abs_moy += ((i - vmoy(par)))/dimn(par)
+        eca_abs_moy += (((i - vmoy(par))**2)**(1/2))/dimn(par)
     return eca_abs_moy
 
 # écrire une fonction permettant de renvoyer la variance d'un
@@ -165,41 +164,36 @@ def vss(par):
 # à une entrée de n valeurs numériques : vqu(par)
 
 def vqu(par):
-    temp = list.copy(par)
-    q1 = float((vsom(temp))*(25/100))
+    q1 = float((vsom(par))*(25/100))
     sum = 0
-    liste = vecncrois(temp)
+    liste = vecncrois(par)
     for i in liste:
         sum += i
-        if sum >= q1:
+        if (sum+i) >= q1:
             return i
 
 # une fonction permettant de renvoyer la valeur de la médiane q2 d'un tableau
 # à une entrée de n valeurs numériques : vqu(par)
 
 def vqd(par):
-    temp = list.copy(par)
-    q2 = float(vsom(temp))*(50/100)
+    q2 = float(vsom(par))*(50/100)
     sum = 0
-    liste = vecncrois(temp)
+    liste = vecncrois(par)
     for i in liste:
         sum += i
-        print(sum)
-        print(q3)
-        if sum >= q2:
+        if (sum+i) >= q2:
             return i
 
 # une fonction permettant de renvoyer la valeur du 3e quartile q3 d'un tableau
 # à une entrée de n valeurs numériques : vqu(par)
 
 def vqt(par):
-    temp = list.copy(par)
-    q3 = float((vsom(temp))*(75/100))
+    q3 = float((vsom(par))*(75/100))
     sum = 0
-    liste = vecncrois(temp)
+    liste = vecncrois(par)
     for i in liste:
         sum += i
-        if sum >= q3:
+        if (sum+i) >= q3:
             return i
 
 # une fonction permettant de renvoyer la valeur de l'intervalle interquatile d'un tableau
@@ -221,7 +215,7 @@ def affichvecsn(tableau, index_debut, index_fin):
         for i in sous_liste:
             print(i)
     except:
-        print("Erreur: les index donné les arguments dépassent la taille de la liste")
+        print("Erreur: les index donnés dépassent la taille de la liste")
 
 # une fonction permettant de renvoyer un tableau à une entrée des p valeurs numériques
 # consécutives d'un tableau à une entrée de n valeurs numériques : vecextp(par1,par2,par3)
@@ -235,18 +229,18 @@ def vecextp(tableau, index_debut, index_fin):
                 index_debut +=1
         return sous_liste
     except:
-        print("Erreur: les index donné les arguments dépassent la taille de la liste")
+        print("Erreur: les index donnés dépassent la taille de la liste")
 
 # une fonction permettant de renvoyer la valeur de la somme d'une sous suite p de valeurs
 # numériques consécutives d'un tableau à une entrée de n valeurs numériques : vssom(par1,par2,par3)
 
 def vssom(tableau, index_debut, index_fin):
-    sous_liste = affichvecsn(tableau, index_debut, index_fin)
+    sous_liste = vecextp(tableau, index_debut, index_fin)
     return vsom(sous_liste)
 
 # une méthode permettant de renvoyer la valeur de la moyenne d'une sous suite de p
 # valeurs consécutives d'un tableau à une entrée de n vlauers numériques : vssom(par1,par2,par3)
 
 def vssmoy(tableau, index_debut, index_fin):
-    sous_liste = affichvecsn(tableau, index_debut, index_fin)
+    sous_liste = vecextp(tableau, index_debut, index_fin)
     return vsom(sous_liste)/dimn(sous_liste)
