@@ -29,9 +29,7 @@ listes = [3, 7, 8, 5, 12, 14, 21, 13, 18]
 # print("vssmoy : ",vssmoy(listes, 0, 5))
 
 #TODO#
-Réécrire ces fonctions pour qu'elles affichent correctement q1
-q2 et q3
-print("vqu : ",vqu(listes))
+# print("vqu : ",vqu(listes))
 print("vqd : ",vqd(listes))
-print("vqt : ",vqt(listes))
-print("viq : ",viq(listes))
+# print("vqt : ",vqt(listes))
+# print("viq : ",viq(listes))

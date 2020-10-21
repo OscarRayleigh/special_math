@@ -181,7 +181,7 @@ def vqd(par):
     liste = vecncrois(par)
     for i in liste:
         sum += i
-        if (sum+i) >= q2:
+        if (sum+next(liste)) >= q2:
             return i
 
 # une fonction permettant de renvoyer la valeur du 3e quartile q3 d'un tableau
