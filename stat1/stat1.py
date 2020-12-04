@@ -239,7 +239,7 @@ def vssom(tableau, index_debut, index_fin):
     return vsom(sous_liste)
 
 # une méthode permettant de renvoyer la valeur de la moyenne d'une sous suite de p
-# valeurs consécutives d'un tableau à une entrée de n vlauers numériques : vssom(par1,par2,par3)
+# valeurs consécutives d'un tableau à une entrée de n valeurs numériques : vssom(par1,par2,par3)
 
 def vssmoy(tableau, index_debut, index_fin):
     sous_liste = vecextp(tableau, index_debut, index_fin)
