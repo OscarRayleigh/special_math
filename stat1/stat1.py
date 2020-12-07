@@ -164,37 +164,53 @@ def vss(par):
 # à une entrée de n valeurs numériques : vqu(par)
 
 def vqu(par):
-    q1 = float((vsom(par))*(25/100))
-    sum = 0
+    q1 = dimn(par)/4
     liste = vecncrois(par)
-    for i in liste:
-        sum += i
-        if (sum+i) >= q1:
-            return i
+    if q1%1 != 0:
+        print("liste[int(q1)] = ", liste[int(q1)])
+        print(q1)
+        q1 = (liste[int(q1)-1]+liste[int(q1)])/2
+
+        return q1
+    print(q1)
+    return liste[q1-1]
 
 # une fonction permettant de renvoyer la valeur de la médiane q2 d'un tableau
 # à une entrée de n valeurs numériques : vqu(par)
 
 def vqd(par):
-    q2 = float(vsom(par))*(50/100)
-    sum = 0
+    q2 = 0
+    N = dimn(par)
     liste = vecncrois(par)
-    for i in liste:
-        sum += i
-        if (sum+next(liste)) >= q2:
-            return i
+
+    if q2%2 == 0:
+        q2 = N/2
+
+    elif q2%2 != 0:
+        q2 = (N+1)/2
+
+    if q2%1 != 0:
+        q2 = int(q2) + 1
+
+    return liste[int(q2)-1]
+
+
 
 # une fonction permettant de renvoyer la valeur du 3e quartile q3 d'un tableau
 # à une entrée de n valeurs numériques : vqu(par)
 
 def vqt(par):
-    q3 = float((vsom(par))*(75/100))
-    sum = 0
+    q3 = dimn(par)*0.75
     liste = vecncrois(par)
-    for i in liste:
-        sum += i
-        if (sum+i) >= q3:
-            return i
+    print(liste)
+    print(q3)
+    if q3%1 != 0:
+        print("liste[int(q3)-1] = ", liste[int(q3)-1])
+        print("liste[int(q3)] = ", liste[int(q3)])
+        q3 = (liste[int(q3)-1]+liste[int(q3)])/2
+
+        return q3
+    return liste[q3-1]
 
 # une fonction permettant de renvoyer la valeur de l'intervalle interquatile d'un tableau
 # à une entrée de n valeurs numériques : vqu(par)

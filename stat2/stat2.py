@@ -221,3 +221,120 @@ def mat2ns(par):
     for i in par:
         vs_1_couple += (((i[0] - moy[0])**2)/(dimmat2n(par)-1))
     return vs_1_couple
+
+# une fonction permettant de renvoyer la valeur du premier quartile 𝑞1(𝑞1) de l’ensemble
+# des premières valeurs numériques de chaque couple ainsi que la valeur du premier quartile 𝑞1(𝑞1)
+# de l’ensemble des secondes valeurs numériques de chaque couple d’un tableau à deux entrées de n
+# couples de valeurs numériques : mat2nqu(par)
+
+
+def mat2ncrois_2e_valeur(par):
+    liste = par.copy()
+    liste_finale = []
+
+    while liste:
+        min = liste[0]
+        for x in liste:
+            temp = x[1]
+            if temp < min[1]:
+                min = x
+        liste_finale.append(min)
+        liste.remove(min)
+    return liste_finale
+
+def mat2nqu(par):
+
+    q1_1 = 0
+    q1_2 = 0
+    N = (dimmat2n(par)-1)/2
+    par = mat2ncrois_2e_valeur(par)
+    print("N = ", N)
+    print("par = ",par)
+
+    if N%2 == 0:
+        q1_2 = (par[int(N/2)-1][1] + par[int(N/2)][1]) / 2
+        print(par[int(N/2)-1][1])
+
+    if N%2 != 0:
+        q1_2 = par[int((N+1)/2)-1][1]
+
+
+    if N%2 == 0:
+        q1_1 = (par[int(N/2)-1][0] + par[int(N/2)][0]) / 2
+        print(par[int(N/2)-1][0])
+
+    if N%2 != 0:
+        q1_1 = par[int((N+1)/2)-1][0]
+
+
+    return [q1_1,q1_2]
+
+
+
+# une fonction permettant de renvoyer la valeur médiane 𝑞2(𝑞2) de
+# l’ensemble des secondes valeurs numériques de chaque couple d’un tableau à deux entrées
+# de n couples de valeurs numériques : matn2nqd(par)
+
+def matn2nqd(par):
+    N = dimmat2n(par)
+    par = mat2ncrois_2e_valeur(par)
+
+    if N%2 != 0:
+        print(int((N+1)/2))
+        q1 = par[int((N+1)/2)-1][1]
+
+
+    elif N%2 == 0:
+        q1 = (par[int(N/2)-1][1] + par[int(N/2)][1]) / 2
+
+
+    return q1
+
+# une fonction permettant de renvoyer la valeur du troisième quartile 𝑞 (𝑞3)
+# de l’ensemble des secondes valeurs numériques de chaque couple d’un
+# tableau à deux entrées de n couples de valeurs numériques : mat2nq3(par)
+
+def mat2nq3(par):
+    q3 = 0
+
+    N = (dimmat2n(par)-1)/2
+    par = mat2ncrois_2e_valeur(par)
+    print("N = ", N)
+    print("par = ",par)
+    print(N)
+    if N%2 == 0:
+        q3 = (par[-(int(N/2))][1] + par[-int(N/2)-1][1]) / 2
+
+    if N%2 != 0:
+        q3 = par[-(int((N+1)/2))][1]
+
+
+    return q3
+
+def mat2nq3_1_couple(par):
+    q3 = 0
+
+    N = (dimmat2n(par)-1)/2
+    par = mat2ncrois_2e_valeur(par)
+    print("N = ", N)
+    print("par = ",par)
+    print(N)
+    if N%2 == 0:
+        q3 = (par[-(int(N/2))][0] + par[-int(N/2)-1][0]) / 2
+
+    if N%2 != 0:
+        q3 = par[-(int((N+1)/2))][0]
+
+
+    return q3
+# une fonction permettant de renvoyer la valeur de l’écart interquartile iq de
+# l’ensemble des premières valeurs numériques de chaque couple ainsi que la valeur
+# de l’écart interquartile iq de l’ensemble des secondes valeurs numériques de
+# chaque couple d’un tableau à deux entrées de n couples de valeurs numériques
+# : mat2niq(par)
+
+def mat2niq(par):
+    q1 = mat2nqu(par)
+    iq_1_couple = mat2nq3_1_couple(par) - q1[0]
+    iq_2_couple = mat2nq3(par) - q1[1]
+    return [iq_1_couple,iq_2_couple]

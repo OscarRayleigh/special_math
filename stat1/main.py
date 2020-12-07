@@ -4,7 +4,7 @@ from stat1 import *
 # à une entrée de n valeurs numériques : vp(par)
 
 
-listes = [3, 7, 8, 5, 12, 14, 21, 13, 18]
+listes = [180, 192, 202, 198, 196, 200, 188, 204, 206, 208, 194, 212, 186]
 # print(impln())
 # print("vecn : ", vecn(150))
 # implvecn()
@@ -29,7 +29,7 @@ listes = [3, 7, 8, 5, 12, 14, 21, 13, 18]
 # print("vssmoy : ",vssmoy(listes, 0, 5))
 
 #TODO#
-# print("vqu : ",vqu(listes))
-print("vqd : ",vqd(listes))
-# print("vqt : ",vqt(listes))
+print("q1 = : ",vqu(listes))
+print("médiane =  : ",vqd(listes))
+print("q3 =  : ",vqt(listes))
 # print("viq : ",viq(listes))
